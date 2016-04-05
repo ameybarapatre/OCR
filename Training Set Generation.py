@@ -30,20 +30,22 @@ def play(img):
     ret,thresh = cv2.threshold(gray,127,255,0)
     contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 
-    for i in range(l,(len(contours))) :
+    for i in range(1,(len(contours))) :
         res = cv2.drawContours(img,contours,i,(0,255,0),2)
-        mom = cv2.moments(contours[j])
+        mom = cv2.moments(contours[i])
         num=find(mom)
-        x = input("Needed value ?")
+        cv2.imshow('image',img)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        x = raw_input("Needed value ?")
         print num ,":",x  
+        
     return
 if __name__ == "__main__":
     #code for checking output for single image
     img = cv2.imread('Puzzle Solver O.jpg')
     play(img)
 
-    cv2.imshow('image',im1)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+   
     
 
